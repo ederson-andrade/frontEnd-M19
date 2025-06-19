@@ -55,7 +55,19 @@ module.exports = function(grunt) {
     watch: {
       files: ['src/**/*.less', 'src/**/*.html'],
       tasks: ['less', 'copy', 'cssmin', 'htmlmin']
+    },
+
+    replace: {
+      corrigePaths: {
+        src: ['dev/index.html'],
+        dest: 'dev/index.html',
+        replacements: [{
+          from: '../dist/',
+          to: ''
+        }]
+      }
     }
+    
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -64,7 +76,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-text-replace');
 
-  grunt.registerTask('build', ['less', 'copy', 'cssmin', 'uglify', 'htmlmin']);
+  grunt.registerTask('build', ['less', 'copy', 'replace', 'cssmin', 'uglify', 'htmlmin']);
   grunt.registerTask('watchTask', ['watch']);
 };
