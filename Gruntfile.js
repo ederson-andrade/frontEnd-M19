@@ -65,6 +65,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['less', 'copy', 'cssmin', 'uglify', 'htmlmin']);
+  grunt.registerTask('build', ['less', 'copy', 'cssmin', 'uglify', 'htmlmin']);
   grunt.registerTask('watchTask', ['watch']);
 };
